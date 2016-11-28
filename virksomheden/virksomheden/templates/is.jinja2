@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<!--
+
+
+
+
+
+       /\
+      /  \
+     /,--.\
+    /< () >\
+   /  `--'  \
+  /          \
+ /            \
+/______________\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+<html lang="da">
+<head>
+    <style>.haha {
+    width: 300px;
+    height: 300px;
+    background-color: red;
+    position: relative;
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+/* Standard syntax */
+@keyframes example {
+    0%   {background-color:transparent; left:-200%; top:0px;}
+    25%  {background-color:transparent; left:100%; top:0px;}
+    50%  {background-color:transparent; left:100%; top:400px;}
+    75%  {background-color:transparent; left:-200%; top:400px;}
+    100% {background-color:transparent; left:-200%; top:0px;}
+}
+body {
+    background-image: url(http://www.gannett-cdn.com/-mm-/9c3c32413bca9cb3e5139b5c69f339aab4e6f501/c=156-0-3950-2853&r=x404&c=534x401/local/-/media/2016/02/12/USATODAY/USATODAY/635908797234844365-AP-Germany-Berlin-Film-Festival.jpg);
+    background-repeat: initial;
+
+}
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+    }
+}
+@-moz-keyframes rotation {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+    to {
+        -moz-transform: rotate(359deg);
+    }
+}
+@-o-keyframes rotation {
+    from {
+        -o-transform: rotate(0deg);
+    }
+    to {
+        -o-transform: rotate(359deg);
+    }
+}
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+
+.clooney {
+    position: center;
+    margin-left: 10px;
+    width: 200px;
+    height: 200px;
+    margin-top: -100%;
+    -webkit-animation: rotation .75s infinite linear;
+    -moz-animation: rotation .75s infinite linear;
+    -o-animation: rotation .75s infinite linear;
+    animation: rotation 100s infinite linear;
+}
+
+}
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+    }
+}
+@-moz-keyframes rotation {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+    to {
+        -moz-transform: rotate(359deg);
+    }
+}
+@-o-keyframes rotation {
+    from {
+        -o-transform: rotate(0deg);
+    }
+    to {
+        -o-transform: rotate(359deg);
+    }
+}
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+
+.loading_arrow {
+    margin-left: 50%;
+    margin-right: auto;
+    width: 450px;
+    margin-top: 40%;
+    -webkit-animation: rotation .75s infinite linear;
+    -moz-animation: rotation .75s infinite linear;
+    -o-animation: rotation .75s infinite linear;
+    animation: rotation 2s infinite linear;
+}
+}
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+    }
+}
+@-moz-keyframes rotation {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+    to {
+        -moz-transform: rotate(359deg);
+    }
+}
+@-o-keyframes rotation {
+    from {
+        -o-transform: rotate(0deg);
+    }
+    to {
+        -o-transform: rotate(359deg);
+    }
+}
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}</style>
+    <title>Techknowledge.eu/nyheder</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="../static/indexstyle.css">
+    <link rel="icon" href="../static/LogoOff.png">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|PT+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="w3-sidenav navbar-left w3-collapse w3-animate-left w3-hide-medium w3-hide-small" id="mySidenav">
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-large w3-hide-large closenav">&times;</a>
+        <a class="text-center brand" href="{{request.route_path('home')}}"><img src="../static/Logo.png" style="margin:auto;" class="img-responsive" height="65px" width="65px"><div class="spanCustom" style="height:15px;"></div><img src="../static/BannerName.png" style="margin:auto" class="img-responsive"></a>
+        <a class="text-center navlink" href="{{request.route_path('artikler')}}">Artikler</a>
+        <a class="text-center navlink" href="{{request.route_path('magasiner')}}">Magasiner</a>
+        <a class="text-center navlink" href="{{request.route_path('om')}}">Om os</a>
+        <a class="text-center navlink" href="{{request.route_path('kontakt')}}">Kontakt</a>
+        {% if request.user is none %}
+        <a class="text-center navlink login w3-content w3-display-bottommiddle" href="{{request.route_path('signin')}}"><span class="glyphicon glyphicon-user"></span> Login</a>
+        <a class="text-center navlink login w3-content w3-display-bottommiddle active" href="{{request.route_path('register')}}" style="bottom:70px"><span class="glyphicon glyphicon-plus-sign"></span> Opret Bruger</a>
+        {% else %}
+        <a class="text-center navlink login w3-content w3-display-bottommiddle" href="{{request.route_path('signout')}}">Log ud</a>
+        <a class="text-center user login-logout w3-content w3-display-bottommiddle" href="{{request.route_path('signout')}}" style="bottom:55px"><span class="glyphicon glyphicon-user"></span><b> {{request.user.name}}</b></a>
+        {% endif %}
+    </nav>
+
+    <div class="w3-main" style="margin-left:350px">
+        <header class="w3-container header-alert">
+            <div id="prepage">
+                <span class="w3-opennav w3-xlarge w3-hide-large opennav" onclick="openNav(), applyBlur()">☰</span>
+            </div>
+        </header>
+        <div id="myNav" class="overlay w3-hide-large">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav(), removeBlur()">×</a><a href="signin.html"></a>
+            <div class="overlay-content">
+                <a class="mobile-nav" href="{{request.route_path('home')}}">Forside</a>
+                <a class="mobile-nav" href="{{request.route_path('artikler')}}">Artikler</a>
+                <a class="mobile-nav" href="{{request.route_path('magasiner')}}">Magasiner</a>
+                <a class="mobile-nav" href="{{request.route_path('om')}}">Om os</a>
+                <a class="mobile-nav" href="{{request.route_path('kontakt')}}">Kontakt</a>
+                <div class="overlay-content logsign">
+                    {% if request.user is none %}
+                    <a class="mobile-nav" href="{{request.route_path('signin')}}">Log in</a>
+                    <a class="mobile-nav" href="{{request.route_path('register')}}">Opret bruger</a>
+                    {% else %}
+                    <a class="mobile-nav" href="{{request.route_path('signout')}}"><span class="glyphicon glyphicon-user"></span><b> {{request.user.name}}</b></a>
+                    <a class="mobile-nav" href="{{request.route_path('signout')}}">Log out</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div id="page">
+            <div class="container">
+
+                 <a class="btn_join_small" href="#" style="float: left; z-index: 3; position:relative;">
+                    <img class="loading_arrow" src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/1/000/0b0/2b9/36b0a25.jpg" />
+                </a>
+
+                 <a class="btn_join_small" href="#" style="float: left; z-index: 1;">
+                    <img class="haha" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Illuminati_triangle_eye.png" />
+                </a>
+
+
+                <audio src="../static/yes.mp3" autoplay>
+                    <p>If you are reading this, it is because your browser does not support the audio element.     </p>
+                    <embed src="yes.mp3" width="180" height="90" hidden="true" />
+                </audio>
+
+            </div>
+        </div>
+</body>
+<script>
+function w3_open() {
+  document.getElementById("mySidenav").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidenav").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  x[slideIndex-1].style.display = "block";
+}
+function openNav() {
+    document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+}
+function applyBlur() {
+    document.getElementById('page').style.cssText = '-webkit-filter: blur(20px); transition: all 0.4s ease 0s';
+    document.getElementById('prepage').style.cssText = '-webkit-filter: blur(20px); transition: all 0.4s ease 0s';
+}
+function removeBlur() {
+    document.getElementById('page').style.cssText = '-webkit-filter: blur(0px); transition: all 0.4s ease 0s';
+    document.getElementById('prepage').style.cssText = '-webkit-filter: blur(0px); transition: all 0.4s ease 0s';
+}
+</script>
+</html>

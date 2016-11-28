@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+	<title>Om os - TechKnowledge</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+	<link rel="stylesheet" href="../static/indexstyle.css">
+	<link rel="icon" href="../static/LogoOff.png">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat|PT+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+</head>
+
+<body>
+
+	<nav class="w3-sidenav navbar-left w3-collapse w3-animate-left w3-hide-small w3-hide-medium" id="mySidenav">
+		<a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-large w3-hide-large closenav">&times;</a>
+		<a class="text-center brand" href="{{request.route_path('home')}}"><img src="../static/Logo.png" style="margin:auto;" class="img-responsive" height="65px" width="65px"><div class="spanCustom" style="height:15px;"></div><img src="../static/BannerName.png" style="margin:auto" class="img-responsive"></a>
+		<a class="text-center navlink" href="{{request.route_path('artikler')}}">Artikler</a>
+		<a class="text-center navlink" href="{{request.route_path('magasiner')}}">Magasiner</a>
+		<a class="text-center navlink active" href="{{request.route_path('om')}}">Om os</a>
+		<a class="text-center navlink" href="{{request.route_path('kontakt')}}">Kontakt</a>
+		{% if request.user is none %}
+		<a class="text-center navlink login w3-content w3-display-bottommiddle" href="{{request.route_path('signin')}}"><span class="glyphicon glyphicon-user"></span> Login</a>
+		<a class="text-center navlink login w3-content w3-display-bottommiddle active" href="{{request.route_path('register')}}" style="bottom:70px"><span class="glyphicon glyphicon-plus-sign"></span> Opret Bruger</a>
+		{% else %}
+		<a class="text-center navlink login w3-content w3-display-bottommiddle" href="{{request.route_path('signout')}}">Log ud</a>
+		<a class="text-center user login-logout w3-content w3-display-bottommiddle" href="{{request.route_path('signout')}}" style="bottom:55px"><span class="glyphicon glyphicon-user"></span><b> {{request.user.name}}</b></a>
+		{% endif %}
+	</nav>
+
+
+	<div class="w3-main" style="margin-left:350px">
+		<header class="w3-container header-alert">
+			<div id="prepage">
+			<span class="w3-opennav w3-xlarge w3-hide-large opennav" onclick="openNav(), applyBlur()">☰</span>
+		</div>
+		</header>
+		<div id="myNav" class="overlay w3-hide-large">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav(), removeBlur()">×</a>
+			<div class="overlay-content">
+				<a class="mobile-nav" href="{{request.route_path('home')}}">Forside</a>
+				<a class="mobile-nav" href="{{request.route_path('artikler')}}">Artikler</a>
+				<a class="mobile-nav" href="{{request.route_path('magasiner')}}">Magasiner</a>
+				<a class="mobile-nav" href="{{request.route_path('om')}}">Om Os</a>
+				<a class="mobile-nav" href="{{request.route_path('kontakt')}}">Kontakt</a>
+				<div class="overlay-content logsign">
+					{% if request.user is none %}
+					<a class="mobile-nav" href="{{request.route_path('signin')}}">Log in</a>
+					<a class="mobile-nav" href="{{request.route_path('register')}}">Opret bruger</a>
+					{% else %}
+					<a class="mobile-nav" href="{{request.route_path('signout')}}"><span class="glyphicon glyphicon-user"></span><b> {{request.user.name}}</b></a>
+					<a class="mobile-nav" href="{{request.route_path('signout')}}">Log out</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+
+<div id="page">
+		<div class="container">
+			<div class="span25 w3-hide-small"></div>
+			<div class="span25"></div>
+			<div class="container-material-arc-alert-about exgrad">
+				<h1 class="text-center">Techknowledge - Hvem er vi?</h1>
+				<h1 class="text-center">___</h1>
+				<div class="span25"></div>
+				<h4 class="desc">“Fremtidens undervisning er der mange bud på. Hvordan ser fremtidens elever ud? Hvordan arbejder de? Hvilken undervisningsform vil man kunne genkende fra i dag? Buddene er mange, nogen mere spekulative end andre.
+													<br>
+													Her på TechKnowledge giver vi vores syn på hvordan vi mener hverdagen vil forme sig for fremtidens unge i uddannelsessystemet.
+													<br></h4><h4 class="desc">
+													Der er ingen tvivl om at digitaliseringen allerede præger nutidens undervisning og den måde vi interagere med hinanden og verden på, og den måde vi lærer på! Vi tror på at gamificering bliver et nøgleord, både i forhold til fremtidens undervisningsredskaber, hvor sociale platforme, læringsplatforme samt digitale projektstyringsværktøj vil smelte sammen.
+												</h4><h4 class="desc">
+													Vi tror også at der ligger et læringsperspektiv i spilindustriens favntag på nutidens og fremtidens unge, både for den motivationsfaktor der ligger i at indleve sig i et spilunivers, men også de unges ønske for opkobling og kommunikation med hinanden over et netværk og communities, hvilket de ofte selv skaber kompetencer for i forhold til den måde de i forvejen opsøger viden på - nemlig gennem internettet og andre fællesskaber.
+													<br></h4><h4 class="desc">
+													Vi tror på at fremtidens unge i uddannelsessystemet i højere grad vil arbejde problembaseret - tættere på det arbejdsmarked og den verden de er på vej ud i.”
+												</h4>
+</h4>
+				</div>
+				<div class="span50"></div>
+				<h2 class="text-center"><b>Mød teamet</b></h2>
+				<div class="span50"></div>
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="container-material-arc w3-animate-bottom profilecard">
+							<a href="{{request.route_path('is')}}"><img src="../static/Anders.png" class="img-responsive profileimg" style="margin:auto;"></a>
+							<div class="span25"></div>
+							<h3 class="text-center"><b>Anders P. Nørgaard</b></h3>
+							<h3 class="text-center">Marketingschef</h3>
+							<div class="span25"></div>
+						</div>
+						<div class="span25"></div>
+					</div>
+					<div class="col-sm-3">
+						<div class="container-material-arc w3-animate-bottom profilecard">
+							<img src="../static/Heino.png" class="img-responsive profileimg" style="margin:auto;">
+							<div class="span25"></div>
+							<h3 class="text-center"><b>Heino Kjølholm Jensen</b></h3>
+							<h3 class="text-center">IT-drift chef</h3>
+						</div>
+						<div class="span25"></div>
+					</div>
+					<div class="col-sm-3">
+						<div class="container-material-arc w3-animate-bottom profilecard">
+							<img src="../static/Susi.png" class="img-responsive profileimg" style="margin:auto;">
+							<div class="span25"></div>
+							<h3 class="text-center"><b>Susi Fjeld Hansen</b></h3>
+							<h3 class="text-center">Personaleafdeling</h3>
+						</div>
+						<div class="span25"></div>
+					</div>
+					<div class="col-sm-3">
+						<div class="container-material-arc profilecard w3-animate-bottom">
+							<img src="../static/kamala.png" class="img-responsive profileimg" style="margin:auto;">
+							<div class="span25"></div>
+							<h3 class="text-center"><b>Kamala N. S. Jellesen</b></h3>
+							<h3 class="text-center">Personaleafdeling</h3>
+						</div>
+						<div class="span25"></div>
+					</div>
+				</div>
+				<div class="span25"></div>
+					<h2 class="text-center w3-animate-bottom"><b>Og tak til alle medarbejderne på TechKnowledge</b></h2>
+					<div class="span50"></div>
+					<img src="../static/LogoOff.png" class="img-responsive w3-animate-bottom" style="margin:auto;" height="150px" width="150px">
+					<div class="span100"></div>
+
+	</div>
+	</div>
+</div>
+
+</body>
+<script>
+function w3_open() {
+  document.getElementById("mySidenav").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidenav").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  x[slideIndex-1].style.display = "block";
+}
+function openNav() {
+    document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+}
+function applyBlur() {
+    document.getElementById('page').style.cssText = '-webkit-filter: blur(20px); transition: all 0.4s ease 0s';
+    document.getElementById('prepage').style.cssText = '-webkit-filter: blur(20px); transition: all 0.4s ease 0s';
+}
+function removeBlur() {
+    document.getElementById('page').style.cssText = '-webkit-filter: blur(0px); transition: all 0.4s ease 0s';
+    document.getElementById('prepage').style.cssText = '-webkit-filter: blur(0px); transition: all 0.4s ease 0s';
+}
+//jQuery time
+var parent, ink, d, x, y;
+$(".profilecard .profileimg").click(function(e){
+	parent = $(this).parent();
+	//create .ink element if it doesn't exist
+	if(parent.find(".ink").length == 0)
+		parent.prepend("<span class='ink'></span>");
+
+	ink = parent.find(".ink");
+	//incase of quick double clicks stop the previous animation
+	ink.removeClass("animate");
+
+	//set size of .ink
+	if(!ink.height() && !ink.width())
+	{
+		//use parent's width or height whichever is larger for the diameter to make a circle which can cover the entire element.
+		d = Math.max(parent.outerWidth(), parent.outerHeight());
+		ink.css({height: d, width: d});
+	}
+
+	//get click coordinates
+	//logic = click coordinates relative to page - parent's position relative to page - half of self height/width to make it controllable from the center;
+	x = e.pageX - parent.offset().left - ink.width()/2;
+	y = e.pageY - parent.offset().top - ink.height()/2;
+
+	//set the position and add class .animate
+	ink.css({top: y+'px', left: x+'px'}).addClass("animate");
+})
+//jQuery time
+var parent, ink, d, x, y;
+$(".navbar-left .navlink").click(function(e){
+	parent = $(this).parent();
+	//create .ink element if it doesn't exist
+	if(parent.find(".ink").length == 0)
+		parent.prepend("<span class='ink'></span>");
+
+	ink = parent.find(".ink");
+	//incase of quick double clicks stop the previous animation
+	ink.removeClass("animate");
+
+	//set size of .ink
+	if(!ink.height() && !ink.width())
+	{
+		//use parent's width or height whichever is larger for the diameter to make a circle which can cover the entire element.
+		d = Math.max(parent.outerWidth(), parent.outerHeight());
+		ink.css({height: d, width: d});
+	}
+
+	//get click coordinates
+	//logic = click coordinates relative to page - parent's position relative to page - half of self height/width to make it controllable from the center;
+	x = e.pageX - parent.offset().left - ink.width()/2;
+	y = e.pageY - parent.offset().top - ink.height()/2;
+
+	//set the position and add class .animate
+	ink.css({top: y+'px', left: x+'px'}).addClass("animate");
+})
+</script>
+
+</html>

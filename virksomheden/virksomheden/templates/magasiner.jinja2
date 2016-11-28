@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+ <title>Magasiner - TechKnowledge</title>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+ <link rel="stylesheet" href="../static/indexstyle.css">
+ <link rel="icon" href="../static/LogoOff.png">
+ <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Montserrat|PT+Sans" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+ <script src="https://use.fontawesome.com/b61c712120.js"></script>
+</head>
+<body>
+
+  <nav class="w3-sidenav navbar-left w3-collapse w3-animate-left w3-hide-medium w3-hide-small" id="mySidenav">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-large w3-hide-large closenav">&times;</a>
+    <a class="text-center brand" href="{{request.route_path('home')}}"><img src="../static/Logo.png" style="margin:auto;" class="img-responsive" height="65px" width="65px"><div class="spanCustom" style="height:15px;"></div><img src="../static/BannerName.png" style="margin:auto" class="img-responsive"></a>
+         <a class="text-center navlink" href="{{request.route_path('artikler')}}">Artikler</a>
+         <a class="text-center navlink active" href="{{request.route_path('magasiner')}}">Magasiner</a>
+         <a class="text-center navlink" href="{{request.route_path('om')}}">Om os</a>
+         <a class="text-center navlink" href="{{request.route_path('kontakt')}}">Kontakt</a>
+         {% if request.user is none %}
+         <a class="text-center navlink login w3-content w3-display-bottommiddle" href="{{request.route_path('signin')}}"><span class="glyphicon glyphicon-user"></span> Login</a>
+         <a class="text-center navlink login w3-content w3-display-bottommiddle active" href="{{request.route_path('register')}}" style="bottom:70px"><span class="glyphicon glyphicon-plus-sign"></span> Opret Bruger</a>
+     		 {% else %}
+         <a class="text-center navlink login w3-content w3-display-bottommiddle" href="{{request.route_path('signout')}}">Log ud</a>
+     		 <a class="text-center user login-logout w3-content w3-display-bottommiddle" href="{{request.route_path('signout')}}" style="bottom:55px"><span class="glyphicon glyphicon-user"></span><b> {{request.user.name}}</b></a>
+     	   {% endif %}
+  </nav>
+
+  <div class="w3-main" style="margin-left:350px">
+    <header class="w3-container header-alert">
+      <div id="prepage">
+    <span class="w3-opennav w3-xlarge w3-hide-large opennav" onclick="openNav(), applyBlur()">☰</span>
+  </div>
+  </header>
+  <div id="myNav" class="overlay w3-hide-large">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav(), removeBlur()">×</a><a href="signin.html"></a>
+            <div class="overlay-content">
+                <a class="mobile-nav" href="{{request.route_path('home')}}">Forside</a>
+                <a class="mobile-nav" href="{{request.route_path('artikler')}}">Artikler</a>
+                <a class="mobile-nav" href="{{request.route_path('magasiner')}}">Magasiner</a>
+                <a class="mobile-nav" href="{{request.route_path('om')}}">Om os</a>
+                <a class="mobile-nav" href="{{request.route_path('kontakt')}}">Kontakt</a>
+                <div class="overlay-content logsign">
+                  {% if request.user is none %}
+                  <a class="mobile-nav" href="{{request.route_path('signin')}}">Log in</a>
+                  <a class="mobile-nav" href="{{request.route_path('register')}}">Opret bruger</a>
+                  {% else %}
+                  <a class="mobile-nav" href="{{request.route_path('signout')}}"><span class="glyphicon glyphicon-user"></span><b> {{request.user.name}}</b></a>
+                  <a class="mobile-nav" href="{{request.route_path('signout')}}">Log out</a>
+                  {% endif %}
+                </div>
+            </div>
+        </div>
+
+<div id="page">
+  <div class="container">
+    <div class="span25 w3-hide-small"></div>
+    <div class="span25"></div>
+    <div class="container-material-arc-alert exgrad">
+      <h2 class="text-center">Magasiner</h2>
+    </div>
+    <div class="span50"></div>
+    <div class="row w3-animate-bottom">
+      <div class="col-sm-6 w3-animate-bottom">
+        <div class="keeper-img">
+          <a href="#" data-toggle="modal" data-target="#myModal"><img src="../static/forside.png" class="img-responsive mag-thumb inkimg"></a>
+        </div>
+        <div class="span25 w3-hide-small"></div>
+        <div class="span25"></div>
+      </div>
+      <div class="col-sm-6">
+        <div class="divider"></div>
+        <div class="row">
+          <div class="col-xs-6">
+            <h3 class="txt-alert"><b>Magasin</b></h3>
+          </div>
+          <div class="col-xs-6">
+            <h3 class="txt-alert text-right">01/11/2016</h3>
+          </div>
+        </div>
+        <div class="span25 w3-hide-small"></div>
+        <div class="span25"></div>
+        <div class="keeper-desc">
+          <h4 class="txt-alert text-justify w3-animate-bottom inkme">Dette er en kort beskrivelse af magasinet. Den er ikke så lang, men der står nok til at man ved hvad magasinet handler om. Der kan for eksempel stå at det er et nyt magasin fra vores virksomhed, og måske et par overskrifter fra magasinet. Man kan også se datoen og titlen over beskrivelsen.</h4>
+
+          <h4 class="txt-alert text-justify w3-animate-bottom inkme"><span class="color:#534363" class="fa fa-chevron-left" style="font-size:50px;"> </span> <b>Klik på billedet for at læse magasinet</b></h4>
+        </div>
+        <div class="span25 w3-hide-small"></div>
+        <div class="span25"></div>
+      </div>
+    </div>
+    <div class="span25 w3-hide-small"></div>
+    <div class="span25"></div>
+  </div>
+  </div>
+</div>
+</div>
+
+
+<div class="modal custom fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+      <div class="modal-dialog">
+
+        <div class="modal-content">
+
+          <div class="modal-header exgrad">
+
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span style="color:#ffffff;" class="fa fa-times"></span> </button>
+
+          </div>
+
+          <div class="modal-body" style="padding:0px;height:80vh">
+
+            <iframe src="../static/pdf2.pdf" width="100%" height="100%"></iframe>
+
+          </div>
+
+          <div class="modal-footer">
+
+            <div class="text-right">
+              <button type="button" class="btn btn-article-end" data-dismiss="modal">Luk</button>
+            </div>
+
+          </div>
+
+        </div><!-- /.modal-content -->
+
+      </div><!-- /.modal-dialog -->
+
+    </div><!-- /.modal -->
+</body>
+<script>
+function w3_open() {
+  document.getElementById("mySidenav").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidenav").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  x[slideIndex-1].style.display = "block";
+}
+function openNav() {
+    document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+}
+function applyBlur() {
+    document.getElementById('page').style.cssText = '-webkit-filter: blur(20px); transition: all 0.4s ease 0s';
+    document.getElementById('prepage').style.cssText = '-webkit-filter: blur(20px); transition: all 0.4s ease 0s';
+}
+function removeBlur() {
+    document.getElementById('page').style.cssText = '-webkit-filter: blur(0px); transition: all 0.4s ease 0s';
+    document.getElementById('prepage').style.cssText = '-webkit-filter: blur(0px); transition: all 0.4s ease 0s';
+}
+//jQuery time
+var parent, ink, d, x, y;
+$(".navbar-left .navlink").click(function(e){
+	parent = $(this).parent();
+	//create .ink element if it doesn't exist
+	if(parent.find(".ink").length == 0)
+		parent.prepend("<span class='ink'></span>");
+
+	ink = parent.find(".ink");
+	//incase of quick double clicks stop the previous animation
+	ink.removeClass("animate");
+
+	//set size of .ink
+	if(!ink.height() && !ink.width())
+	{
+		//use parent's width or height whichever is larger for the diameter to make a circle which can cover the entire element.
+		d = Math.max(parent.outerWidth(), parent.outerHeight());
+		ink.css({height: d, width: d});
+	}
+
+	//get click coordinates
+	//logic = click coordinates relative to page - parent's position relative to page - half of self height/width to make it controllable from the center;
+	x = e.pageX - parent.offset().left - ink.width()/2;
+	y = e.pageY - parent.offset().top - ink.height()/2;
+
+	//set the position and add class .animate
+	ink.css({top: y+'px', left: x+'px'}).addClass("animate");
+})
+//INK desc
+var parent, ink, d, x, y;
+$(".inkme").click(function(e){
+	parent = $(this).parent();
+	//create .ink element if it doesn't exist
+	if(parent.find(".ink").length == 0)
+		parent.prepend("<span class='ink'></span>");
+
+	ink = parent.find(".ink");
+	//incase of quick double clicks stop the previous animation
+	ink.removeClass("animate");
+
+	//set size of .ink
+	if(!ink.height() && !ink.width())
+	{
+		//use parent's width or height whichever is larger for the diameter to make a circle which can cover the entire element.
+		d = Math.max(parent.outerWidth(), parent.outerHeight());
+		ink.css({height: d, width: d});
+	}
+
+	//get click coordinates
+	//logic = click coordinates relative to page - parent's position relative to page - half of self height/width to make it controllable from the center;
+	x = e.pageX - parent.offset().left - ink.width()/2;
+	y = e.pageY - parent.offset().top - ink.height()/2;
+
+	//set the position and add class .animate
+	ink.css({top: y+'px', left: x+'px'}).addClass("animate");
+})
+//INK img
+var parent, ink, d, x, y;
+$(".inkimg").click(function(e){
+	parent = $(this).parent();
+	//create .ink element if it doesn't exist
+	if(parent.find(".ink").length == 0)
+		parent.prepend("<span class='ink'></span>");
+
+	ink = parent.find(".ink");
+	//incase of quick double clicks stop the previous animation
+	ink.removeClass("animate");
+
+	//set size of .ink
+	if(!ink.height() && !ink.width())
+	{
+		//use parent's width or height whichever is larger for the diameter to make a circle which can cover the entire element.
+		d = Math.max(parent.outerWidth(), parent.outerHeight());
+		ink.css({height: d, width: d});
+	}
+
+	//get click coordinates
+	//logic = click coordinates relative to page - parent's position relative to page - half of self height/width to make it controllable from the center;
+	x = e.pageX - parent.offset().left - ink.width()/2;
+	y = e.pageY - parent.offset().top - ink.height()/2;
+
+	//set the position and add class .animate
+	ink.css({top: y+'px', left: x+'px'}).addClass("animate");
+})
+</script>
+</html>

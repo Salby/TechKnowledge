@@ -1,0 +1,3 @@
+[run]
+source = virksomheden
+omit = virksomheden/test*

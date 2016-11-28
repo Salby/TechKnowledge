@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+ <title>Artikler - TechKnowledge</title>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+ <link rel="stylesheet" href="../static/indexstyle.css">
+ <link rel="icon" href="../static/LogoOff.png">
+ <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Montserrat|PT+Sans" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="w3-sidenav navbar-left w3-collapse w3-animate-left w3-hide-medium w3-hide-small" id="mySidenav">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-large w3-hide-large closenav">&times;</a>
+    <a class="text-center brand" href="{{request.route_path('home')}}"><img src="../static/Logo.png" style="margin:auto;" class="img-responsive" height="65px" width="65px"><div class="spanCustom" style="height:15px;"></div><img src="../static/BannerName.png" style="margin:auto" class="img-responsive"></a>
+         <a class="text-center navlink active" href="{{request.route_path('artikler')}}">Artikler</a>
+         <a class="text-center navlink" href="{{request.route_path('magasiner')}}">Magasiner</a>
+         <a class="text-center navlink" href="{{request.route_path('om')}}">Om os</a>
+         <a class="text-center navlink" href="{{request.route_path('kontakt')}}">Kontakt</a>
+         {% if request.user is none %}
+         <a class="text-center navlink login w3-content w3-display-bottommiddle" href="{{request.route_path('signin')}}"><span class="glyphicon glyphicon-user"></span> Login</a>
+         <a class="text-center navlink login w3-content w3-display-bottommiddle active" href="{{request.route_path('register')}}" style="bottom:70px"><span class="glyphicon glyphicon-plus-sign"></span> Opret Bruger</a>
+     		 {% else %}
+         <a class="text-center navlink login w3-content w3-display-bottommiddle" href="{{request.route_path('signout')}}">Log ud</a>
+     		 <a class="text-center user login-logout w3-content w3-display-bottommiddle" href="{{request.route_path('signout')}}" style="bottom:55px"><span class="glyphicon glyphicon-user"></span><b> {{request.user.name}}</b></a>
+     	   {% endif %}
+  </nav>
+
+  <div class="w3-main" style="margin-left:350px">
+    <header class="w3-container header-alert">
+      <div id="prepage">
+    <span class="w3-opennav w3-xlarge w3-hide-large opennav" onclick="openNav(), applyBlur()">☰</span>
+  </div>
+  </header>
+  <div id="myNav" class="overlay w3-hide-large">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav(), removeBlur()">×</a>
+            <div class="overlay-content">
+                <a class="mobile-nav" href="{{request.route_path('home')}}">Forside</a>
+                <a class="mobile-nav" href="{{request.route_path('artikler')}}">Artikler</a>
+                <a class="mobile-nav" href="{{request.route_path('magasiner')}}">Magasiner</a>
+                <a class="mobile-nav" href="{{request.route_path('om')}}">Om os</a>
+                <a class="mobile-nav" href="{{request.route_path('kontakt')}}">Kontakt</a>
+                <div class="overlay-content logsign">
+                  {% if request.user is none %}
+                  <a class="mobile-nav" href="{{request.route_path('signin')}}">Log in</a>
+                  <a class="mobile-nav" href="{{request.route_path('register')}}">Opret bruger</a>
+                  {% else %}
+                  <a class="mobile-nav" href="{{request.route_path('signout')}}"><span class="glyphicon glyphicon-user"></span><b> {{request.user.name}}</b></a>
+                  <a class="mobile-nav" href="{{request.route_path('signout')}}">Log out</a>
+                  {% endif %}
+                </div>
+            </div>
+        </div>
+
+<div id="page">
+  <div class="container">
+    <div class="span25 w3-hide-small"></div>
+    <div class="span25"></div>
+      <div class="container-material-arc-alert exgrad">
+        <h2 class="text-center">Artikler</h2>
+      </div>
+      <div class="span25"></div>
+      <div class="row">
+        <div class="col-sm-6" style="overflow:hidden">
+          <div class="article-card w3-animate-bottom" style="overflow:hidden">
+            <div class="w3-display-container">
+              <a data-toggle="modal" data-target="#myModal"><img src="../static/interwebs.jpg" class="img-responsive article-thumbnail"></a>
+              <div class="w3-display-bottomleft w3-container"><h2 class="article-header">Internettets Oprindelse</h2></div>
+            </div>
+            <p class="text-justify article-peek">Den første hjemmeside der nogensinde blev lavet var World Wide Web (www). World Wide Web er stadigvæk oppe at køre i dag, og det er den basale form som vi stadig bruger den dag i dag.
+
+            I 2003 var det ti år siden den første internetbrowser blev skabt, og med den blev internettet tilgængeligt for almindelige mennesker, og siden er antallet af brugere eksploderet. Der er i 2007 mere end en milliard mennesker på internettet.
+            </p>
+              <span class="article-peek-ripple"><a href="#" data-toggle="modal" data-target="#myModal" class="btn-article"><span class="txt-alert article-peek"><b>Læs mere</b></span></a></span>
+            <div class="span25"></div>
+
+          </div>
+          <div class="span25"></div>
+          <div class="article-card w3-animate-bottom">
+            <div class="w3-display-container">
+              <a data-toggle="modal" data-target="#myModal2"><img src="../static/turing.png" class="img-responsive article-thumbnail"></a>
+              <div class="w3-display-topleft w3-container"><h2 class="article-header">Computerens historie</h2></div>
+            </div>
+            <p class="text-justify article-peek">Omkring 1945 fandtes der en basal indsigt i, hvad der er beregneligt, og begrebet algoritme var veldefineret.
+
+Den engelske matematiker Alan M. Turing havde allerede i 1936 undersøgt ydedygtigheden af en ideelt programmérbar regnemaskine (Turingmaskinen), som kunne bringes til at udføre en algoritme.</p>
+            <span class="article-peek-ripple"><a href="#" data-toggle="modal" data-target="#myModal2" class="btn-article"><span class="txt-alert article-peek"><b>Læs mere</b></span></a></span>
+            <div class="span25"></div>
+          </div>
+          <div class="span25"></div>
+          <div class="article-card w3-animate-bottom">
+            <div class="w3-display-container">
+              <a data-toggle="modal" data-target="#myModal5"><img src="../static/skrald.jpeg" class="img-responsive article-thumbnail"></a>
+              <div class="w3-display-bottomleft w3-container"><h2 class="article-header">Elektronikaffald</h2></div>
+            </div>
+            <p class="text-justify article-peek">Greenpeace Norden har gjort opmærksom på at elektronikaffald indeholder farlige kemikalier og skal behandles med omhu, men Vesten sender en del af problemet videre til Asien og Afrika.
+            </p>
+            <span class="article-peek-ripple"><a href="#" data-toggle="modal" data-target="#myModal5" class="btn-article"><span class="txt-alert article-peek"><b>Læs mere</b></span></a></span>
+            <div class="span25"></div>
+
+          </div>
+          <div class="span25"></div>
+        </div>
+        <div class="col-sm-6" style="overflow:hidden">
+          <div class="article-card w3-animate-bottom">
+            <div class="w3-display-container">
+              <a data-toggle="modal" data-target="#myModal3"><img src="../static/virtualbox3d.jpeg" class="img-responsive article-thumbnail"></a>
+              <div class="w3-display-bottomleft w3-container"><h2 class="article-header">Virtual Box 3D</h2></div>
+            </div>
+            <p class="article-peek text-justify">Virtuel Box 3D er en brille, som du kan tage på og spille computerspil i 3D, som om det var virkeligt. Rigtig mange mennesker der spiller computerspil, har altid været fan af skydespil, som fx FPS games (First Person Shooter). Mange gamers lever sig ind i deres spil når de sidder og spiller. Derfor blev der opfundet Virtuel Box 3D, som gør det muligt at spille computerspil som var det i virkeligheden.</p>
+            <span class="article-peek-ripple"><a href="#" data-toggle="modal" data-target="#myModal3" class="btn-article"><span class="txt-alert article-peek"><b>Læs mere</b></span></a></span>
+            <div class="span25"></div>
+          </div>
+          <div class="span25"></div>
+          <div class="article-card w3-animate-bottom">
+            <div class="w3-display-container">
+              <a data-toggle="modal" data-target="#myModal4"><img src="../static/3dprint.jpg" class="img-responsive article-thumbnail"></a>
+              <div class="w3-display-bottomleft w3-container"><h2 class="article-header">3D Printer</h2></div>
+            </div>
+            <p class="article-peek text-justify">
+      En 3D printer er noget som vi måske aldrig havde troet ville blive til virkelighed, men det kan rent faktisk godt lade sig gøre. Nu her i vores tid kan vi printe ting ud i 3D. Med en 3D printer kan folk lave alverdens ting, som f.eks. diagrammer til deres arbejde eller måske en lille figur til pynt i stuen.</p>
+            <span class="article-peek-ripple"><a href="#" data-toggle="modal" data-target="#myModal4" class="btn-article"><span class="txt-alert article-peek"><b>Læs mere</b></span></a></span>
+            <div class="span25"></div>
+          </div>
+          <div class="span25"></div>
+
+        </div>
+      </div>
+  </div>
+</div>
+
+<!--MODALS-->
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header exgrad">
+        </div>
+        <div class="modal-body">
+          <h2 class="txt-alert"><b>Internettets oprindelse</b></h2>
+          <h5><i>Af Emil Persson</i></h5>
+          <img src="../static/interwebs.jpg" class="img-responsive article-thumbnail" style="margin-bottom:4%;">
+          <p>Den første hjemmeside der nogensinde blev lavet var World Wide Web (www). World Wide Web er stadigvæk oppe at køre i dag, og det er den basale form som vi stadig bruger den i dag. I 2003 var det ti år siden den første internetbrowser blev skabt, og med den blev internettet tilgængeligt for almindelige mennesker, og siden er antallet af brugere eksploderet. Der er i 2007 mere end en milliard mennesker på internettet.</p>
+          <p>Der er god grund til at tro, at teknologien bag internettet stadig bliver mere usynlig. I dag tænder man jo bare for en computer, åbner en browser og skriver en adresse. Det tænkes, at fremtidens internet muligvis bliver uafhængig af computeren og i stedet bliver bygget ind i dagligdagsapparater som TV, telefon og køleskab, så vi slet ikke vil opdage når vi bruger nettet.</p>
+          <p>Da MOSAIC-webbrowseren kom på markedet i 1993, blev det begyndelsen på en paradoksal udvikling for internettet. Nettet med MOSAIC og efterfølgeren Netscape blev udbredt udover alle tænkelige grænser, men herefter blev internettet så brugervenligt og "dagligdags", at vi i dag næsten glemmer hvor fantastisk det er.</p>
+          <p>Vi er i dag vant til og tager det som en selvfølge, at vi en søgemaskine kan skrive et hvilket som helst søgeord, og få tusindvis eller sommetider millioner af relevante sider frem inden vi kan nå at sige "hypertekst". Vi bemærker ikke engang, at den side, som giver os lige præcis den information vi mangler, ligger på en server i Hong Kong 20.000 kilometer væk. Vi er blevet så vant til, at vi kan sende e-mails, bestille biografbilletter eller booke flyrejser via internettet, at vi slet ikke tænker over den højt sofistikerede teknologi og det komplekse netværk af maskiner, som ligger bag.</p>
+      <div class="facts">
+        <h4><b>Facts om internettet</b></h4>
+        <ul>
+          <li>37% af internettet består af porno</li>
+          <li>30,000 websider bliver hacket hver dag</li>
+          <li>Der er høj hastighedsinternet på vej op ad Mount Everest</li>
+          <li>Det meste af trafikken på internettet kommer ikke fra mennesker, men derimod fra robotter.</li>
+          <li>I Kina findes der en del klinikker, hvor man behandler folk for internetafhængighed</li>
+          <li>20% af verdens befolkning bruger internettet</li>
+          <li>Hvert minut uploades der 72 timers video til YouTube</li>
+          <li>Der bliver sendt mere end 200 millioner e-mails i minuttet</li>
+          <li>Det vil kræve et lidt flere end 50 millioner hestekræfter at holde internettet kørende</li>
+          <li>Musikvideoen til "Gangnam Style" er den mest sete video i internettet historie med over 2,6 milliarder visninger</li>
+        </ul>
+      </div>
+    <div class="span25 w3-hide-small"></div>
+    <div class="text-right">
+      <button type="button" class="btn btn-article-end" data-dismiss="modal">Luk</button>
+    </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="myModal2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header exgrad">
+          </div>
+          <div class="modal-body">
+            <h2 class="txt-alert"><b>Computerens historie</b></h2>
+            <h5><i>Af Jonas Mortensen</i></h5>
+            <img src="../static/turing.png" class="img-responsive article-thumbnail" style="margin-bottom:4%">
+            <p>Omkring 1945 fandtes der en basal indsigt i, hvad der er beregneligt, og begrebet algoritme var veldefineret. </p>
+            <p> Den engelske matematiker Alan M. Turing havde allerede i 1936 undersøgt ydedygtigheden af en ideelt programmérbar regnemaskine (Turingmaskinen), som kunne bringes til at udføre en algoritme. </p>
+            <p>Det var også fastslået, at man med to symboler, kan udtrykke alt, hvad der kan udtrykkes matematisk. Endvidere var det bl.a. ud fra amerikaneren Claude E. Shannons arbejde klart, at elektriske kredsløb kan bringes til at udføre algoritmer, såfremt det sker i et binært system. </p>
+            <p>Den digitale løsning blev dog alligevel anset for et sidespor, da den rejste en række vanskelige tekniske problemer. </p>
+            <p>Omkring 1945 var der kun radiorør til rådighed, hvis man ville bygge en elektronisk computer. Der skulle bruges ganske mange, og de havde en forholdsvis kort levetid. </p>
+            <p> Skulle der fx bruges 10.000 radiorør, der havde en gennemsnitslevealder på 1000 timers brug, ville der stort set hele tiden være radiorør, der ikke virkede. Og med blot et defekt radiorør ville maskinen ikke kunne fungere. </p>
+            <p>Det ville også være meget vanskeligt at udvikle et arbejdslager eller en hukommelse, da de enten ville kræve mange radiorør, med de problemer det ville give, eller en helt ny teknologi. </p>
+            <p>Et alternativ til radiorør var relæer af den type, der blev anvendt i telefoncentraler. Ulemperne ved relæer var dels deres størrelse og dels deres i denne sammenhæng lave hastighed. Men med enten radiorør eller relæer var de teknologiske krav for en computer til stede. </p>
+            <p>To teknologiske udviklinger gjorde det muligt at udvikle en mere alment brugbar computer. </p>
+            <p>For det første betød opfindelsen af ferritkernelageret, at computeren kunne have et arbejdslager af en vis størrelse og med rimelige adgang til dets informationer. </p>
+            <p>For det andet kom transistoren frem i løbet af 1950'erne, og dermed var der skabt et stabilt og pålideligt teknologisk grundlag for computeren, specielt da transistorer i løbet af 1960'erne kunne integreres på chips. Her skabtes integrerede kredsløb med mange transistorer. </p>
+            <p>I 1971 skabes den første mikroprocessor, dvs. en central processer enhed (CPU) på en chip. Samtidig udvikles integrerede kredsløb, der kunne fungere som arbejdslager. Det gav basis for udvikling af en helt ny type computer, der i begyndelsen kaldtes mikrocomputer, senere pc. </p>
+            <p>Skabelsen af CPU’en gav også plads til en anden form for processer enhed, men dedikeret til grafik (GPU). Denne processer fungerer meget som en CPU. Men i stedet for få store kerner, har en GPU mange små kerner som beregner de små problemer der opstår i sammenhæng med beregning af grafik. </p>
+            <div class="span25 w3-hide-small"></div>
+            <div class="text-right">
+              <button type="button" class="btn btn-article-end" data-dismiss="modal">Luk</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="myModal3" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header exgrad">
+            </div>
+            <div class="modal-body">
+              <h2 class="txt-alert"><b>Virtuel Box 3D</b></h2>
+      <h5><i>Af Bertram Thidemann Rosencrone von Benzon</i></h5>
+      <img src="../static/virtualbox3d.jpeg" class="img-responsive article-thumbnail" style="margin-bottom:4%">
+      <h3><b>Hvad er en Virtuel Box 3D?</b></h3>
+      <p>
+        Virtuel Box 3D er en brille, som du kan tage på og spille computerspil i 3D, som om det var virkeligt. Rigtig mange mennesker der spiller computerspil, har altid været fan af skydespil, som fx FPS games (First Person Shooter). Mange gamers lever sig ind i deres spil når de sidder og spiller. Derfor blev der opfundet Virtuel Box 3D, som gør det muligt at spille computerspil som var det i virkeligheden. Det er ikke kun skydespil, men alt fra rolige børnespil til vilde skydespil.
+      </p>
+      <h3><b>Hvordan bruger man Virtuel Box 3D?</b></h3>
+      <p>
+Hvis du selv køber denne Virtuel Box 3D, får du en pakke med 3D briller, joysticks og CD. De tre ting skal du bruge for at kunne sætte dit 3D spil op. Du slår først dine briller og Joystick til computeren, som du kan med USB eller Bluetooth. Derefter tager du din CD, og installerer programmet til dine briller og joysticks. CD'en indeholder også, nogle spil som du kan spille. For at kunne spille, råder de dig til du er i et stort åbent rum hvor du kan bevæge dig. Du ville så kunne gå rundt i rummet og se at du faktisk går i en helt anden verden med brillerne. De joysticks du har er lige som hænder i spillet, du bruger dem som dine hænder i virkeligheden, og så er du klar til at spille alverdens spil.      </p>
+      <h3><b>Virtuel Box 3D´s Fremtid</b></h3>
+      <p>
+        I fremtiden ville man ikke kunne forstille sig hvad Virtuel Box kan bruges til. De er ved at eksperimentere med det i militæret, om de kan bruge det til træning. Flere virksomheder er også ved at teste, om man kan bruge det i deres hverdag. Virtuel Box kan måske blive en stor ting, hvis den kan blive brugt til nogle ting som kan virke i hverdagen. I Japan er der mange unge mennesker der er bange for at dyrke sex. De har lavet et program hvor man kan have samleje med en 3D figur som de kan øve eller forberede sig til at have sex med rigtige mennesker.
+      </p>
+      <h3><b>Hvor kan jeg købe den og hvad koster den?</b></h3>
+      <p>
+        Virtuel Box 3D kan man købe i mange elektronik forretninger, men typisk kun de store butikker. De kan også købes overalt på nettet, da det er meget populært mellem folk der spiller computer og vil prøve dem. Det er meget forskelligt hvad de koster, da der findes forskellige mærker og kvaliteter.
+      </p>
+      <p>
+        Prisen lige nu ligger mellem 350- til 1000 kroner. Du kan sagtens finde billigere eller dyrere, men hvis man skulle købe et par Virtuel Box 3D med denne pris, er de tilfredsstillende.
+      </p>
+              <div class="span25 w3-hide-small"></div>
+              <div class="text-right">
+                <button type="button" class="btn btn-article-end" data-dismiss="modal">Luk</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="myModal4" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header exgrad">
+              </div>
+              <div class="modal-body">
+                <h2 class="txt-alert"><b>3D Printer</b></h2>
+                <img src="../static/3dprint.jpg" class="img-responsive article-thumbnail" style="margin-bottom:4%">
+      <h5><i>Af Bertram Thidemann Rosencrone von Benzon</i></h5>
+      <h3><b>Hvad er en 3D Printer?</b></h3>
+      <p>
+En 3D printer er noget som vi måske aldrig havde troet ville blive til virkelighed, men det kan rent faktisk godt lade sig gøre. Nu her i vores tid kan vi printe ting ud i 3D. Med en 3D printer kan folk lave alverdens ting, som f.eks. diagrammer til deres arbejde eller måske en lille figur til pynt i stuen.      </p>
+      <h3><b>Hvordan Virker en 3D Printer?</b></h3>
+      <p>
+        3D printeren virker sådan, at du får noget lim og papir, som er specielt lavet til printeren. Så tager man et USB-stik og sætter et billede ind derpå. Billedet skal laves om til noget der er kaldet en CAD-fil. En CAD-fil er en 3D-fil. Efter det skal dit USB-stik sættes til printeren. Du vælger dit billede, og så vælger du de indstillinger som passer til det du skal printe ud. Så starter printeren med at lave din 3D model. Det kan tage lang tid alt efter hvad du printer ud. Når printeren er færdig skal du lade din figur køle lidt ned så limen kan sætte sig. Når limen har sat sig, så har du et stk. 3D print.
+      </p>
+      <h3><b>Hvad kan en 3D printer i fremtiden?</b></h3>
+      <p>
+I fremtiden kan vi måske begynde at producere ting som vi kan bruge derhjemme eller måske på arbejdspladsen. 3D printeren kan blive en stor ting i fremtiden, for hvad nu hvis vi bygger en printer, som kan få metal og træ i? Så kunne man måske bygge sådan noget som en stol og et bord.      </p>
+      <h3><b>Hvad koster den og hvor kan jeg få den?</b></h3>
+      <p>
+        Det er meget forskelligt hvad de koster, da der er store og små - bedre kvalitet og dårligere kvalitet, men normalt koster de fra 3000-7000 kr. alt efter hvor du køber den henne, og hvor god kvaliteten er. Nu kan man få dem i de fleste elektroniske butikker og internetsider, da de er blevet ret populære. Især i Danmark er de ret udbredt.
+      </p>
+                <div class="span25 w3-hide-small"></div>
+                <div class="text-right">
+                  <button type="button" class="btn btn-article-end" data-dismiss="modal">Luk</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="myModal5" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header exgrad">
+                </div>
+                <div class="modal-body">
+                  <h2><b>Elektronikaffald</b></h2>
+                  <img src="../static/skrald.jpeg" class="img-responsive article-thumbnail" style="margin-bottom:4%">
+                  <p><b>
+                    Greenpeace Norden har gjort opmærksom på at elektronikaffald indeholder farlige kemikalier og skal behandles med omhu, men Vesten sender en del af problemet videre til Asien og Afrika.
+                  </b></p>
+                  <h3><b>Miljøbelastning</b></h3>
+                  <p>
+                    Den stigende udbredelse af IT har imidlertid miljømæssige konsekvenser. Gartner, som er et internationalt analysebureau, har vurderet at IT, altså globalt set, bidrager lige så meget til CO2-udledningen som den samlede flyindustri. Miljøbelastningen fra IT vil i de kommende år få en endnu større betydning på den globale klimadagsorden.
+                  </p>
+                  <h3><b>Elektronikaffald</b></h3>
+                  <p>
+                    Alene i EU bliver der produceret 8,7 mio. tons elektronikaffald hvert år, men kun 2,1 mio. tons indsamles og genanvendes via et kontrolleret system. Der er ingen der sådan helt præcist ved hvad der sker med de resterende 75% affald. Meget tyder dog på, at en del affald ender som en illegal  strøm af elektronikskrot fra Vesten til især Afrika og Asien. Her er lokale opkøbere klar til at aftage  affaldet for at videresælge metaller, som fx jern og bly.
+                  </p>
+                  <h3><b>Hvordan skaffer vi os af med affaldet?</b></h3>
+                  <p>
+                    Affaldet skilles ad på specialiserede modtagecentre, hvor de reelt elektroniske dele frasorteres og recirkuleres, enten direkte, eller gennem omsmeltning og oparbejdning. Herved spares miljø og samfund store belastninger, både hvad angår forurening og prisen for at bortskaffe de giftige slagger bagefter.<br>
+                    Ukorrekt bortskaffelse af elektronikaffald rammer som regel forbrændingsanlæggene, og er med til at sende tungmetaller  i omløb gennem slagger og røg fra anlæggene.
+                  </p>
+                  <div class="span25 w3-hide-small"></div>
+                  <div class="text-right">
+                    <button type="button" class="btn btn-article-end" data-dismiss="modal">Luk</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+</body>
+<script>
+function w3_open() {
+  document.getElementById("mySidenav").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidenav").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  x[slideIndex-1].style.display = "block";
+}
+function openNav() {
+    document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+}
+function applyBlur() {
+    document.getElementById('page').style.cssText = 'filter: blur(20px); transition: all 0.4s ease 0s';
+    document.getElementById('prepage').style.cssText = 'filter: blur(20px); transition: all 0.4s ease 0s';
+}
+function removeBlur() {
+    document.getElementById('page').style.cssText = 'filter: blur(0px); transition: all 0.4s ease 0s';
+    document.getElementById('prepage').style.cssText = 'filter: blur(0px); transition: all 0.4s ease 0s';
+}
+//jQuery time
+var parent, ink, d, x, y;
+$(".article-card .article-thumbnail").click(function(e){
+	parent = $(this).parent();
+	//create .ink element if it doesn't exist
+	if(parent.find(".ink").length == 0)
+		parent.prepend("<span class='ink'></span>");
+
+	ink = parent.find(".ink");
+	//incase of quick double clicks stop the previous animation
+	ink.removeClass("animate");
+
+	//set size of .ink
+	if(!ink.height() && !ink.width())
+	{
+		//use parent's width or height whichever is larger for the diameter to make a circle which can cover the entire element.
+		d = Math.max(parent.outerWidth(), parent.outerHeight());
+		ink.css({height: d, width: d});
+	}
+
+	//get click coordinates
+	//logic = click coordinates relative to page - parent's position relative to page - half of self height/width to make it controllable from the center;
+	x = e.pageX - parent.offset().left - ink.width()/2;
+	y = e.pageY - parent.offset().top - ink.height()/2;
+
+	//set the position and add class .animate
+	ink.css({top: y+'px', left: x+'px'}).addClass("animate");
+})
+//jQuery time
+var parent, ink, d, x, y;
+$(".article-card .article-header").click(function(e){
+	parent = $(this).parent();
+	//create .ink element if it doesn't exist
+	if(parent.find(".ink").length == 0)
+		parent.prepend("<span class='ink'></span>");
+
+	ink = parent.find(".ink");
+	//incase of quick double clicks stop the previous animation
+	ink.removeClass("animate");
+
+	//set size of .ink
+	if(!ink.height() && !ink.width())
+	{
+		//use parent's width or height whichever is larger for the diameter to make a circle which can cover the entire element.
+		d = Math.max(parent.outerWidth(), parent.outerHeight());
+		ink.css({height: d, width: d});
+	}
+
+	//get click coordinates
+	//logic = click coordinates relative to page - parent's position relative to page - half of self height/width to make it controllable from the center;
+	x = e.pageX - parent.offset().left - ink.width()/2;
+	y = e.pageY - parent.offset().top - ink.height()/2;
+
+	//set the position and add class .animate
+	ink.css({top: y+'px', left: x+'px'}).addClass("animate");
+})
+//jQuery time
+var parent, ink, d, x, y;
+$(".article-peek-ripple").click(function(e){
+	parent = $(this).parent();
+	//create .ink element if it doesn't exist
+	if(parent.find(".ink").length == 0)
+		parent.prepend("<span class='ink'></span>");
+
+	ink = parent.find(".ink");
+	//incase of quick double clicks stop the previous animation
+	ink.removeClass("animate");
+
+	//set size of .ink
+	if(!ink.height() && !ink.width())
+	{
+		//use parent's width or height whichever is larger for the diameter to make a circle which can cover the entire element.
+		d = Math.max(parent.outerWidth(), parent.outerHeight());
+		ink.css({height: d, width: d});
+	}
+
+	//get click coordinates
+	//logic = click coordinates relative to page - parent's position relative to page - half of self height/width to make it controllable from the center;
+	x = e.pageX - parent.offset().left - ink.width()/2;
+	y = e.pageY - parent.offset().top - ink.height()/2;
+
+	//set the position and add class .animate
+	ink.css({top: y+'px', left: x+'px'}).addClass("animate");
+})
+//jQuery time
+var parent, ink, d, x, y;
+$(".article-card .article-peek").click(function(e){
+	parent = $(this).parent();
+	//create .ink element if it doesn't exist
+	if(parent.find(".ink").length == 0)
+		parent.prepend("<span class='ink'></span>");
+
+	ink = parent.find(".ink");
+	//incase of quick double clicks stop the previous animation
+	ink.removeClass("animate");
+
+	//set size of .ink
+	if(!ink.height() && !ink.width())
+	{
+		//use parent's width or height whichever is larger for the diameter to make a circle which can cover the entire element.
+		d = Math.max(parent.outerWidth(), parent.outerHeight());
+		ink.css({height: d, width: d});
+	}
+
+	//get click coordinates
+	//logic = click coordinates relative to page - parent's position relative to page - half of self height/width to make it controllable from the center;
+	x = e.pageX - parent.offset().left - ink.width()/2;
+	y = e.pageY - parent.offset().top - ink.height()/2;
+
+	//set the position and add class .animate
+	ink.css({top: y+'px', left: x+'px'}).addClass("animate");
+})
+//jQuery time
+var parent, ink, d, x, y;
+$(".navbar-left .navlink").click(function(e){
+	parent = $(this).parent();
+	//create .ink element if it doesn't exist
+	if(parent.find(".ink").length == 0)
+		parent.prepend("<span class='ink'></span>");
+
+	ink = parent.find(".ink");
+	//incase of quick double clicks stop the previous animation
+	ink.removeClass("animate");
+
+	//set size of .ink
+	if(!ink.height() && !ink.width())
+	{
+		//use parent's width or height whichever is larger for the diameter to make a circle which can cover the entire element.
+		d = Math.max(parent.outerWidth(), parent.outerHeight());
+		ink.css({height: d, width: d});
+	}
+
+	//get click coordinates
+	//logic = click coordinates relative to page - parent's position relative to page - half of self height/width to make it controllable from the center;
+	x = e.pageX - parent.offset().left - ink.width()/2;
+	y = e.pageY - parent.offset().top - ink.height()/2;
+
+	//set the position and add class .animate
+	ink.css({top: y+'px', left: x+'px'}).addClass("animate");
+})
+</script>
+</html>

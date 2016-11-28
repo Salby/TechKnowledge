@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+ <title>Opret - TechKnowledge</title>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+ <link rel="stylesheet" href="../static/indexstyle.css">
+ <link rel="icon" href="../static/LogoOff.png">
+ <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Montserrat|PT+Sans" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="w3-sidenav navbar-left w3-collapse w3-animate-left w3-hide-small w3-hide-medium" id="mySidenav">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-large w3-hide-large closenav">&times;</a>
+    <a class="text-center brand" href="{{request.route_path('home')}}"><img src="../static/Logo.png" style="margin:auto;" class="img-responsive" height="65px" width="65px"><div class="spanCustom" style="height:15px;"></div><img src="../static/BannerName.png" style="margin:auto" class="img-responsive"></a>
+         <a class="text-center navlink" href="{{request.route_path('artikler')}}">Artikler</a>
+         <a class="text-center navlink" href="{{request.route_path('magasiner')}}">Magasiner</a>
+         <a class="text-center navlink" href="{{request.route_path('om')}}">Om os</a>
+         <a class="text-center navlink" href="{{request.route_path('kontakt')}}">Kontakt</a>
+         {% if request.user is none %}
+         <a class="text-center navlink login w3-content w3-display-bottommiddle" href="{{request.route_path('signin')}}"><span class="glyphicon glyphicon-user"></span> Login</a>
+         <a class="text-center navlink login w3-content w3-display-bottommiddle active" href="{{request.route_path('register')}}" style="bottom:70px"><span class="glyphicon glyphicon-plus-sign"></span> Opret Bruger</a>
+     		 {% else %}
+         <a class="text-center navlink login w3-content w3-display-bottommiddle" href="{{request.route_path('signout')}}">Log ud</a>
+     		 <a class="text-center user login-logout w3-content w3-display-bottommiddle" href="{{request.route_path('signout')}}" style="bottom:55px"><span class="glyphicon glyphicon-user"></span><b> {{request.user.name}}</b></a>
+     	   {% endif %}
+     </nav>
+
+     <div class="w3-main" style="margin-left:350px">
+       <header class="w3-container header-alert">
+         <div id="prepage">
+       <span class="w3-opennav w3-xlarge w3-hide-large opennav" onclick="openNav(), applyBlur()">☰</span>
+     </div>
+     </header>
+     <div id="myNav" class="overlay w3-hide-large">
+               <a href="javascript:void(0)" class="closebtn" onclick="closeNav(), removeBlur()">×</a><a href="signin.html"></a>
+               <div class="overlay-content">
+                   <a class="mobile-nav" href="{{request.route_path('home')}}">Forside</a>
+                   <a class="mobile-nav" href="{{request.route_path('artikler')}}">Artikler</a>
+                   <a class="mobile-nav" href="{{request.route_path('magasiner')}}">Magasiner</a>
+                   <a class="mobile-nav" href="{{request.route_path('om')}}">Om os</a>
+                   <a class="mobile-nav" href="{{request.route_path('kontakt')}}">Kontakt</a>
+                   <div class="overlay-content logsign">
+                     {% if request.user is none %}
+                     <a class="mobile-nav" href="{{request.route_path('signin')}}">Log in</a>
+                     <a class="mobile-nav" href="{{request.route_path('register')}}">Opret bruger</a>
+                     {% else %}
+                     <a class="mobile-nav" href="{{request.route_path('signout')}}"><span class="glyphicon glyphicon-user"></span><b> {{request.user.name}}</b></a>
+                     <a class="mobile-nav" href="{{request.route_path('signout')}}">Log out</a>
+                     {% endif %}
+                   </div>
+               </div>
+           </div>
+
+<div id="page">
+<div class="container">
+  <div class="span25 w3-hide-small"></div>
+  <div class="span25"></div>
+  <div class="container-material-arc w3-animate-left ">
+    <div class="row">
+      <div class="col-xs-6">
+        <h1><span class="txt-alert"><b>Opret Bruger</b></span></h1>
+      </div>
+      <div class="col-xs-6">
+        <img src="../static/LogoOff.png" width="100" height="100" class="pull-right">
+      </div>
+    </div>
+      <form class="w3-container" action="{{request.route_path('register')}}" method="POST">
+      <label>Brugernavn</label>
+      <input class="w3-animate-input w3-input" type="usrname" name="username" style="width:35%"></br>
+      <div class="span25"></div>
+      <label>E-mail</label>
+      <input class="w3-animate-input w3-input" type="email" name="email" style="width:35%"></br>
+      <div class="span25"></div>
+      <label>Password</label>
+      <input class="w3-animate-input w3-input" type="password" style="width:35%" name="password"></br>
+      <p><b><span class="txt-alert">* Husk at bruge både tal og bogstaver, når du laver et password</span></b></p>
+      <div class="span50"></div>
+      <input type="radio" name="nyhedsbrev" value="ja" class="active">
+      <label>Jeg ønsker at blive informeret om nyheder fra Techknowledge via deres nyhedsbrev</label><br>
+      <input type="radio" name="nyhedsbrev" value="nej">
+      <label>Jeg ønsker <span class="txt-alert">ikke</span> at blive informeret om nyheder fra Techknowledge via deres nyhedsbrev</label>
+      <div class="span50"></div>
+      <input type="submit" value="Opret bruger" class="btn-alert exgrad-btn">
+    </form>
+    <div class="container">
+      <div class="span25 w3-hide-small"></div>
+      <div class="span25"></div>
+      <h4 class="txt-alert"><b>Har du allerede en bruger? </b><a href="{{request.route_path('signin')}}">Log in</a></h4>
+    </div>
+  </div>
+<div>
+
+</div>
+</div>
+</div>
+
+</body>
+<script>
+function w3_open() {
+    document.getElementById("mySidenav").style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidenav").style.display = "none";
+}
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  x[slideIndex-1].style.display = "block";
+}
+function openNav() {
+    document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+}
+function applyBlur() {
+    document.getElementById('page').style.cssText = '-webkit-filter: blur(20px); transition: all 0.4s ease 0s';
+    document.getElementById('prepage').style.cssText = '-webkit-filter: blur(20px); transition: all 0.4s ease 0s';
+}
+function removeBlur() {
+    document.getElementById('page').style.cssText = '-webkit-filter: blur(0px); transition: all 0.4s ease 0s';
+    document.getElementById('prepage').style.cssText = '-webkit-filter: blur(0px); transition: all 0.4s ease 0s';
+}
+//jQuery time
+var parent, ink, d, x, y;
+$(".navbar-left .navlink").click(function(e){
+	parent = $(this).parent();
+	//create .ink element if it doesn't exist
+	if(parent.find(".ink").length == 0)
+		parent.prepend("<span class='ink'></span>");
+
+	ink = parent.find(".ink");
+	//incase of quick double clicks stop the previous animation
+	ink.removeClass("animate");
+
+	//set size of .ink
+	if(!ink.height() && !ink.width())
+	{
+		//use parent's width or height whichever is larger for the diameter to make a circle which can cover the entire element.
+		d = Math.max(parent.outerWidth(), parent.outerHeight());
+		ink.css({height: d, width: d});
+	}
+
+	//get click coordinates
+	//logic = click coordinates relative to page - parent's position relative to page - half of self height/width to make it controllable from the center;
+	x = e.pageX - parent.offset().left - ink.width()/2;
+	y = e.pageY - parent.offset().top - ink.height()/2;
+
+	//set the position and add class .animate
+	ink.css({top: y+'px', left: x+'px'}).addClass("animate");
+})
+</script>
+</html>
