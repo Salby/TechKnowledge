@@ -6,7 +6,7 @@ body {
 .navbar-left {
   background-color: #2a1535;
   padding: 20px;
-  box-shadow: 0 2px 50px 18px rgba(0, 0, 0, 0.20);
+  box-shadow: 0 5px 25px 18px rgba(0, 0, 0, 0.20);
   font-size: 18px;
   width: 350px;
 }
